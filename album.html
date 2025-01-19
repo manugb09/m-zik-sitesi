@@ -152,9 +152,11 @@
         <div class="song-list">
             <h2>Şarkı Listesi</h2>
             <ul id="song-list">
-                <li onclick="playSong('song1')">Şarkı 1 - 1</li>
-                <li onclick="playSong('song2')">Şarkı 1 - 2</li>
-                <li onclick="playSong('song3')">Şarkı 1 - 3</li>
+                <li onclick="playSong('song1')">Şarkı 1</li>
+                <li onclick="playSong('song2')">Şarkı 2</li>
+                <li onclick="playSong('song3')">Şarkı 3</li>
+                <li onclick="playSong('song4')">Şarkı 4</li>
+                <li onclick="playSong('song5')">Şarkı 5</li>
             </ul>
         </div>
     </div>
@@ -177,9 +179,9 @@
             } else if (songId === 'song2') {
                 songSrc = 'https://github.com/manugb09/m-zik-sitesi/raw/main/uploads/deneme%201.mp3';
             } else if (songId === 'song3') {
-                songSrc = 'https://github.com/manugb09/m-zik-sitesi/raw/main/uploads/(1).mp3'; // 3. şarkı
-            }
-
+                songSrc = 'https://github.com/manugb09/m-zik-sitesi/raw/main/uploads/(1).mp3';}
+            } else if (songId === 'song4') {songSrc = 'https://github.com/manugb09/m-zik-sitesi/raw/main/uploads/Starlight Dreams.mp3';}
+             } else if (songId === 'song5') {songSrc = 'https://github.com/manugb09/m-zik-sitesi/raw/main/uploads/I would wait for you on the roads at nig.mp3';}
             audioSource.src = songSrc;
             audioPlayer.load();
             audioPlayer.play();
