@@ -71,4 +71,131 @@
 </div>
 </body> 
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Albüm 2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: white;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Menü Stilleri */
+        #menu-toggle {
+            position: fixed;
+            left: 10px;
+            top: 10px;
+            z-index: 1000;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 300px;
+            background-color: #000;
+            color: white;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+            overflow-y: auto;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar.active {
+            transform: translateX(0);
+        }
+
+        .sidebar h2 {
+            padding: 20px;
+            background-color: #1a1a1a;
+            margin: 0;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 20px;
+        }
+
+        .sidebar ul li {
+            margin: 15px 0;
+            padding: 10px;
+            background-color: #333;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            color: white;
+        }
+
+        .sidebar ul li:hover {
+            background-color: #555;
+        }
+
+        /* Şarkı Listesi */
+        .song-list {
+            margin-top: 60px;
+        }
+
+        .song-list li {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #333;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .song-list li:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <!-- Menü Butonu -->
+    <button id="menu-toggle">Menü</button>
+
+    <!-- Menü -->
+    <div class="sidebar" id="sidebar">
+        <h2>Menü</h2>
+        <ul>
+            <li onclick="navigateTo('index.html')">Ana Sayfa</li>
+            <li onclick="navigateTo('album1.html')">Albüm 1</li>
+        </ul>
+    </div>
+
+    <!-- Albüm İçeriği -->
+    <h1>Albüm 2</h1>
+    <ul class="song-list">
+        <li>Şarkı 2 - 1</li>
+        <li>Şarkı 2 - 2</li>
+        <li>Şarkı 2 - 3</li>
+    </ul>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const sidebar = document.getElementById('sidebar');
+
+        // Menü açma/kapatma
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+        });
+
+        // Sayfa yönlendirme
+        function navigateTo(page) {
+            window.location.href = page;
+        }
+    </script>
+</body>
+</html>
+
 
