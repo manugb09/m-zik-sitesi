@@ -6,21 +6,20 @@
     <title>Albüm 1</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Arka Plan Videosu */
+        /* Arka plan için YouTube video iframe */
         .video-background {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Videoyu ekran boyutlarına göre ayarlama */
-            z-index: -1; /* Video arka planda olacak */
+            z-index: -1; /* Arka planda olması için */
         }
 
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #000;
+            background-color: #000; /* Siyah arka plan varsayılan olarak */
             color: white;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
@@ -136,11 +135,8 @@
     </style>
 </head>
 <body>
-    <!-- Arka planda akvaryum videosu -->
-    <video class="video-background" autoplay loop muted>
-        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4"> <!-- Akvaryum videosunun URL'sini buraya ekleyin -->
-        Tarayıcınız video desteği sunmamaktadır.
-    </video>
+    <!-- YouTube Video Arka Planı -->
+    <iframe class="video-background" src="https://www.youtube.com/embed/dVkK36KOcqs?autoplay=1&loop=1&playlist=dVkK36KOcqs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
     <button id="menu-toggle">Menü</button>
     <button id="dark-mode-toggle">Karanlık Mod</button>
