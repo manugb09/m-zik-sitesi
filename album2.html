@@ -36,6 +36,8 @@
         <li onclick="playSong('song1')">Şarkı 1</li>
         <li onclick="playSong('song2')">Şarkı 2</li>
         <li onclick="playSong('song3')">Şarkı 3</li>
+        <li onclick="playSong('song4')">Şarkı 4</li>
+        <li onclick="playSong('song5')">Şarkı 5</li>
     </ul>
     <audio id="audio-player" controls style="width: 100%; margin-top: 20px;">
         <source id="audio-source" src="" type="audio/mpeg">
@@ -49,13 +51,18 @@
         function playSong(songId) {
             let songSrc = '';
             if (songId === 'song1') {
-                songSrc = 'https://github.com/manugb09/m-zik-sitesi/raw/main/uploads/'; // Şarkı 2-1
+                songSrc = 'https://github.com/manugb09/m-zik-sitesi/raw/main/uploads/'; // Şarkı 1
             } else if (songId === 'song2') {
-                songSrc = 'https://github.com/manugb09/m-zik-sitesi/raw/main/uploads/'; // Şarkı 2-2
+                songSrc = 'https://github.com/manugb09/m-zik-sitesi/raw/main/uploads/'; // Şarkı 2
             } else if (songId === 'song3') {
-                songSrc = 'https://github.com/manugb09/m-zik-sitesi/raw/main/uploads/'; // Şarkı 2-3
+                songSrc = 'https://github.com/manugb09/m-zik-sitesi/raw/main/uploads/'; // Şarkı 3
             }
-
+             } else if (songId === 'song4') {
+                songSrc = 'https://github.com/manugb09/m-zik-sitesi/raw/main/uploads/'; // Şarkı 4
+            }
+             } else if (songId === 'song5') {
+                songSrc = 'https://github.com/manugb09/m-zik-sitesi/raw/main/uploads/'; // Şarkı 5
+            }
             audioSource.src = songSrc;
             audioPlayer.load();
             audioPlayer.play();
