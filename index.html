@@ -109,6 +109,7 @@
             <h2>Albüm Listesi</h2>
             <ul>
                 <li onclick="navigateToAlbum(1)">Albüm 1</li>
+                <li onclick="navigateToAlbum(2)">Albüm 2</li>
             </ul>
         </div>
     </div>
@@ -122,10 +123,14 @@
             sidebar.classList.toggle('active');
         });
 
-        // Albüm tıklama yönlendirmesi
-        function navigateToAlbum(albumId) {
-            window.location.href = `album.html?album=${albumId}`;
-        }
+// Albüm tıklama yönlendirmesi
+function navigateToAlbum(albumId) {
+    if (albumId === 1) {
+        window.location.href = 'album.html'; // Albüm 1 sayfasına yönlendir
+    } else if (albumId === 2) {
+        window.location.href = 'album2.html'; // Albüm 2 sayfasına yönlendir
+    }
+}
     </script>
 </body>
 </html>
