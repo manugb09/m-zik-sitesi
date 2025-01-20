@@ -3,133 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Müzik Platformu</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Main Menu</title>
     <style>
-        /* Genel Stil */
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #000; /* Siyah arka plan */
-            color: white; /* Beyaz yazılar */
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            overflow: hidden;
         }
 
-        /* Sol Menü için Stil */
-        .sidebar {
-            position: fixed;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 300px;
-            background-color: #000; /* Arka plan siyah */
-            color: white; /* Yazılar beyaz */
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
-            overflow-y: auto;
-            transform: translateX(-100%);
-            transition: transform 0.3s ease;
+        .menu-container {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
         }
-        .sidebar.active {
-            transform: translateX(0);
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
         }
-        .sidebar h2 {
-            padding: 20px;
-            background-color: #1a1a1a; /* Başlık arka planı daha açık siyah */
+
+        .menu {
+            list-style: none;
+            padding: 0;
             margin: 0;
         }
-        .sidebar ul {
-            list-style: none;
-            padding: 20px;
-        }
-        .sidebar ul li {
+
+        .menu li {
             margin: 15px 0;
-            padding: 10px;
-            background-color: #333; /* Menü öğesi koyu gri */
-            border-radius: 5px;
-            cursor: pointer;
-            text-align: center;
-            color: white;
         }
-        .sidebar ul li:hover {
-            background-color: #555; /* Hover rengi */
-        }
-        #menu-toggle {
-            position: fixed;
-            left: 10px; /* Butonu sola taşır */
-            top: 10px;
-            z-index: 1000;
-            background-color: #007BFF;
+
+        .menu a {
+            text-decoration: none;
+            font-size: 1.2rem;
             color: white;
+            background: linear-gradient(90deg, #ff8a00, #e52e71);
+            padding: 15px 30px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+        }
+
+        .menu a:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 10px rgba(255, 138, 0, 0.7);
+        }
+
+        .color-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #fff;
+            color: #333;
             border: none;
             padding: 10px 20px;
+            border-radius: 5px;
             cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: background 0.3s ease, transform 0.2s ease;
         }
 
-        /* About Me Bölümü */
-        .about-me {
-            padding: 20px;
-            text-align: center;
-            background-color: #333;
-            margin-top: 60px;
-        }
-        .about-me h2 {
-            margin-bottom: 10px;
-        }
-        .about-me p {
-            font-size: 16px;
-        }
-
-        /* Görsel için Stil */
-        .about-me img {
-            max-width: 200px;
-            border-radius: 10px;
-            margin-bottom: 20px; /* Görsel ile metin arasına boşluk */
+        .color-button:hover {
+            background: #f0f0f0;
+            transform: scale(1.1);
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Müzik Platformu</h1>
-        </header>
+    <button class="color-button" onclick="changeColors()">Change Colors</button>
+    <div class="menu-container">
+        <h1>Welcome to manu's AI song list</h1>
+        <ul class="menu">
+            <li><a href="album.html">list 1</a></li>
+            <li><a href="album2.html">list 2</a></li>
+            <li><a href="about.html">About me</a></li>
+        </ul>
+    </div>
 
-        <!-- About Me Bölümü -->
-        <section class="about-me">
-        <!-- Görseli ekle -->
-   <img src="https://github.com/manugb09/m-zik-sitesi/raw/main/472611889_566631542941628_3297995864476849071_n.jpg" alt="Hakkımda Görseli" style="width: 200px; height: 200px; object-fit: cover;">
-            <h2>About Me</h2>
-            <p>Hi, my name is Ali Y. I'm a regular high school student like everyone. I love coding if you can see. If you want to reach me, this is my Instagram address: <a href="https://www.instagram.com/ali.yi_kmn/" target="_blank">Instagram</a></p>
-        </section>
-
-        <main>
-            <!-- İçerik buraya gelir -->
-        </main>
-
-        <button id="menu-toggle">Menü</button>
-       <div class="sidebar" id="sidebar">
-    <h2>Albüm Listesi</h2>
-    <ul>
-        <li onclick="navigateToAlbum(1)">Albüm 1</li>
-        <li onclick="navigateToAlbum(2)">Albüm 2</li> <!-- Albüm 2 bağlantısı -->
-    </ul>
-</div>
-    
     <script>
-        const menuToggle = document.getElementById('menu-toggle');
-        const sidebar = document.getElementById('sidebar');
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
 
-        // Menü açma/kapatma
-        menuToggle.addEventListener('click', () => {
-            sidebar.classList.toggle('active');
-        });
-
-// Albüm tıklama yönlendirmesi
-function navigateToAlbum(albumId) {
-    if (albumId === 1) {
-        window.location.href = 'album.html'; // Albüm 1 sayfasına yönlendir
-    } else if (albumId === 2) {
-        window.location.href = 'album2.html'; // Albüm 2 sayfasına yönlendir
-    }
-}
+        function changeColors() {
+            const randomGradient = `linear-gradient(135deg, ${getRandomColor()}, ${getRandomColor()}, ${getRandomColor()})`;
+            document.body.style.background = randomGradient;
+        }
     </script>
 </body>
 </html>
