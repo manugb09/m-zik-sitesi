@@ -4,33 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main Menu</title>
-    <link rel="icon" href="https://raw.githubusercontent.com/manugb09/m-zik-sitesi/main/uploads/a25716ed-632c-478c-9fc1-de0edf939aaa.jpg" type="image/jpeg"> 
     <style>
         body {
-            margin: 0;
-            font-family: 'Arial', sans-serif;
+            font-family: Arial, sans-serif;
             background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
-            height: 100vh;
+            color: white;
             display: flex;
             justify-content: center;
             align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .buttons-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 10;
+        }
+
+        .buttons-container button {
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
             color: white;
-            overflow: hidden;
+            background-color: #e52e71;
+            border: none;
+            margin-bottom: 10px;
+        }
+
+        .buttons-container button:hover {
+            background-color: #ff8a00;
         }
 
         .menu-container {
-            text-align: center;
-            background: rgba(0, 0, 0, 0.6);
+            margin-top: 100px;
             padding: 30px;
+            background: rgba(0, 0, 0, 0.6);
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
         }
 
         h1 {
             font-size: 2.5rem;
-            margin-bottom: 20px;
             font-weight: bold;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+            margin-bottom: 20px;
         }
 
         .menu {
@@ -52,7 +73,6 @@
             border-radius: 25px;
             transition: all 0.3s ease;
             font-weight: bold;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
         }
 
         .menu a:hover {
@@ -61,39 +81,90 @@
         }
 
         .color-button {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: #fff;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #fff;
             color: #333;
             border: none;
-            padding: 10px 20px;
             border-radius: 5px;
             cursor: pointer;
             font-size: 1rem;
             font-weight: bold;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            transition: background 0.3s ease, transform 0.2s ease;
         }
 
         .color-button:hover {
-            background: #f0f0f0;
-            transform: scale(1.1);
+            background-color: #f0f0f0;
         }
     </style>
 </head>
 <body>
-    <button class="color-button" onclick="changeColors()">Change Colors</button>
+    <div class="buttons-container">
+        <!-- Kayıt/Giriş veya Çıkış butonu -->
+        <button id="auth-button" onclick="toggleAuth()">Register / Login</button>
+    </div>
+
     <div class="menu-container">
         <h1>Welcome to manu's AI song list</h1>
         <ul class="menu">
-            <li><a href="album.html">list 1</a></li>
-            <li><a href="album2.html">list 2</a></li>
+            <li><a href="album.html" id="album-link">list 1</a></li>
+            <li><a href="album2.html" id="album2-link">list 2</a></li>
             <li><a href="about%20me.html">About me</a></li>
         </ul>
+        <button class="color-button" onclick="changeColors()">Change Colors</button>
     </div>
 
     <script>
+        // Kullanıcı giriş durumu kontrolü
+        function checkLoginStatus() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            if (isLoggedIn === 'true') {
+                document.getElementById('auth-button').innerText = 'Logout';
+                // Giriş yapılmışsa albüm linklerine erişim sağlanır
+                enableAlbumLinks();
+            } else {
+                document.getElementById('auth-button').innerText = 'Register / Login';
+                // Giriş yapılmamışsa albümlere erişim engellenir
+                disableAlbumLinks();
+            }
+        }
+
+        // Albüm linklerine erişimi engelle
+        function disableAlbumLinks() {
+            document.getElementById('album-link').onclick = function(event) {
+                event.preventDefault();
+                alert('Please log in to access albums.');
+                window.location.href = 'login.html'; // Giriş sayfasına yönlendir
+            };
+            document.getElementById('album2-link').onclick = function(event) {
+                event.preventDefault();
+                alert('Please log in to access albums.');
+                window.location.href = 'login.html'; // Giriş sayfasına yönlendir
+            };
+        }
+
+        // Albüm linklerine erişimi sağla
+        function enableAlbumLinks() {
+            document.getElementById('album-link').onclick = null;
+            document.getElementById('album2-link').onclick = null;
+        }
+
+        // Kullanıcı giriş yaparsa veya çıkış yaparsa butonları kontrol et
+        function toggleAuth() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            if (isLoggedIn === 'true') {
+                // Çıkış yapma işlemi
+                localStorage.removeItem('isLoggedIn');
+                alert('You have logged out.');
+                window.location.href = 'index.html'; // Sayfayı yenileyip çıkış işlemi sonrası ana sayfaya yönlendir
+            } else {
+                // Giriş sayfasına yönlendirme
+                window.location.href = 'login.html';
+            }
+        }
+
+        // Sayfa yüklendiğinde giriş durumunu kontrol et
+        window.onload = checkLoginStatus;
+
         function getRandomColor() {
             const letters = '0123456789ABCDEF';
             let color = '#';
